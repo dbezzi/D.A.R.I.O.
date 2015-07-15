@@ -1,7 +1,7 @@
 { 
- 	"name": "OpenShift-Sever-NonBlocking", 
+ 	"name": "OpenShift-Sever-Test1", 
    "version": "0.0.1", 
-   "description": "OpenShift Sever NonBlocking", 
+   "description": "OpenShift Sever Test", 
    "keywords": [ 
      "OpenShift", 
      "Node.js", 
@@ -9,9 +9,9 @@
      "openshift" 
    ], 
    "author": { 
-     "name": "Paolo Ceravolo", 
-     "email": "paolo.ceravolo at unimi.it", 
-     "url": "https://homes.di.unimi.it/ceravolo/" 
+     "name": "Dario Bezzi", 
+     "email": "dario.bezzi at studenti.unimi.it", 
+     "url": "https://di.unimi.it" 
    }, 
  	 
    "engines": { 
@@ -21,5 +21,5 @@
    "scripts": { 
    "start": "node web.js" 
  }, 
- "main": "web.js" 
+ "main": "index.html"  /*web.js
  } 
