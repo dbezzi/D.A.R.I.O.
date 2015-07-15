@@ -19,7 +19,7 @@
      "npm": ">= 1.0.0" 
    }, 
    "scripts": { 
-   "start": "node web.js" 
+   "start": "node sample.js" 
  }, 
  "main": "web.js"  
  } 
