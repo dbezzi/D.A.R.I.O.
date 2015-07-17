@@ -25,23 +25,23 @@ function Corriere (parola, callback)
      {
         new YQL.exec('select * from html where url="'+url+'" and  xpath ="//div/h5//strong"', function(response) 
         {      
-           var rispondone = response.query.results.strong; 
-           //console.log(JSON.stringify(rispondone));
+           var risposta_corriere = response.query.results.strong; 
+           //console.log(JSON.stringify(risposta_corriere));
     
-          if(rispondone[0][0] == '[') 
+          if(risposta_corriere[0][0] == '[') 
           {
-              for(i = 1; i < rispondone[0].length - 1; i++)
+              for(i = 1; i < risposta_corriere[0].length - 1; i++)
               {
-                   stringa += (rispondone[0][i]);
-                   //console.log("ne ho preso uno! Guarda qua:   " + stringa);
+                   stringa += (risposta_corriere[0][i]);
+                   //console.log("Work in progress:  " + stringa);
               }
           }
-          else stringa = "Termine straniero, sillabazione non disponibile. Lamentatevi col Corriere";
+          else stringa = "Termine straniero o sillabazione non disponibile.";
        
            callback(stringa);
          });
      }
-     else callback("la pagina non esiste"); 
+     else callback("La pagina non esiste. Provare ad aggiungere _1 alla parola richiesta."); 
 
    });
 
@@ -56,6 +56,8 @@ app.post('/', function(req, res)
   Corriere(req.body.name, function(result){
     res.send("Sillabazione di '" + req.body.name + "': "+ result);  });   
 });
+
+
 
 
 
