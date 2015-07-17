@@ -1,5 +1,5 @@
 { 
- 	"name": "OpenShift-Sever-Test1", 
+ 	"name": "OpenShift-Sever-Test2", 
    "version": "0.0.1", 
    "description": "OpenShift Sever Test", 
    "keywords": [ 
@@ -19,7 +19,7 @@
      "npm": ">= 1.0.0" 
    }, 
    "scripts": { 
-   "start": "node server.js" 
+   "start": "node Corriere_server.js" 
  }, 
- "main": "server.js"  
+ "main": "Corriere_server.js"  
  } 
