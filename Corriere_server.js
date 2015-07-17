@@ -13,6 +13,10 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
+app.post('/', function (req, res) {
+  res.send('Hello World! ma di più');
+});
+
 
 
 
