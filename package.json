@@ -1,7 +1,7 @@
 { 
- 	"name": "OpenShift-Sever-Test2", 
-   "version": "0.0.1", 
-   "description": "OpenShift Sever Test", 
+ 	"name": "OpenShift-Dizionario-Test", 
+   "version": "0.0.4", 
+   "description": "OpenShift Dictionary Test", 
    "keywords": [ 
      "OpenShift", 
      "Node.js", 
