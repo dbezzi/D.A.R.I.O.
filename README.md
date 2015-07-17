@@ -1,2 +1,2 @@
 # Raw italian dictionary 
-Scraping the Corriere della Sera!
+Scraping the <em>Corriere della Sera</em>!
