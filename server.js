@@ -60,7 +60,7 @@ app.post('/', function(req, res)
 app.get('/', function(req, res) 
 {
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    res.send("Il server funziona");   
+    res.send("Il server funziona (ma risponde in modo intelligente solo a chiamate POST)");   
 });
 
 
