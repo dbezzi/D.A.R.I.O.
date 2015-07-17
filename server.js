@@ -57,6 +57,11 @@ app.post('/', function(req, res)
     res.send("Sillabazione di '" + req.body.name + "': "+ result);  });   
 });
 
+app.get('/', function(req, res) 
+{
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.send("Il server funziona");   
+});
 
 
 
