@@ -50,8 +50,8 @@ app.post('/myaction', function(req, res)
     res.send("Sillabazione di '" + req.body.name + "': "+ result);  });   
 });
 
-app.set('address', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
-app.listen(process.env.OPENSHIFT_NODEJS_PORT || 8080, function()
+app.set('address', process.env.OPENSHIFT_NODEJS_IP);
+app.listen(process.env.OPENSHIFT_NODEJS_PORT, function()
 { console.log(app.get('address'));
   console.log('Sto ascoltando...');
 });
