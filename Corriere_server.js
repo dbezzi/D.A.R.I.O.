@@ -1,6 +1,4 @@
-var express = require('express');
 var http = require('http');
-var app = express();
 var bodyParser = require('body-parser');
 var changeCase = require('change-case');
 var YQL = require("yql");
@@ -40,18 +38,19 @@ function Corriere (parola, callback)
 
 }
 
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.post('/myaction', function(req, res) 
-{
-  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+ function processa(request, response)
+ { 
+   response.writeHead(200, {'Content-Type', 'text/html; charset=utf-8'});  
+    Corriere(req.body.name, function(result){
+    response.write("Sillabazione di '" + req.body.name + "': "+ result);  }); 
+    response.end();  
+ }  
  
-  Corriere(req.body.name, function(result){
-    res.send("Sillabazione di '" + req.body.name + "': "+ result);  });   
-});
+var port =  process.env.OPENSHIFT_NODEJS_PORT || 8080;   // Port 8080 if you run locally   
+var address =  process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1"; // Listening to localhost if you run locally   
+   
+var s = http.createServer(processa);   
+s.listen(port, address);   
 
-app.listen(1337, function()
-{
-  //console.log('Server running on port 1337');
-});
+
 
