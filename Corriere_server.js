@@ -52,6 +52,6 @@ app.post('/myaction', function(req, res)
 
 app.listen(1337, function()
 {
-  console.log('Server running on port 1337/');
+  //console.log('Server running on port 1337');
 });
 
