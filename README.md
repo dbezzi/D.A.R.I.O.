@@ -1,2 +1,2 @@
-# dbezzi.github.io
-il mio primo progetto su GitHub (lo so, è veramente brutto)
+# Raw italian dictionary 
+Scraping the Corriere della Sera!
