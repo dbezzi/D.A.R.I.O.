@@ -19,7 +19,7 @@
      "npm": ">= 1.0.0" 
    }, 
    "scripts": { 
-   "start": "node Corriere_server.js" 
+   "start": "node server.js" 
  }, 
- "main": "Corriere_server.js"  
+ "main": "server.js"  
  } 
