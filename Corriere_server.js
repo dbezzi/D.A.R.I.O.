@@ -13,7 +13,7 @@ function Corriere (parola, callback)
 
    http.get(url, function(res) 
    {
-     console.log("statusCode: ", res.statusCode); 
+     //console.log("statusCode: ", res.statusCode); 
      if (res.statusCode == 200)
      {
         new YQL.exec('select * from html where url="'+url+'" and  xpath ="//div/h5//strong"', function(response) 
@@ -26,7 +26,7 @@ function Corriere (parola, callback)
               for(i = 1; i < rispondone[0].length - 1; i++)
               {
                    stringa += (rispondone[0][i]);
-                   console.log("ne ho preso uno! Guarda qua:   " + stringa);
+                   //console.log("ne ho preso uno! Guarda qua:   " + stringa);
               }
           }
           else stringa = "Termine straniero, sillabazione non disponibile. Lamentatevi col Corriere";
@@ -52,6 +52,6 @@ app.post('/myaction', function(req, res)
 
 app.listen(1337, function()
 {
-  console.log('Server running at http://127.0.0.1:1337/');
+  console.log('Server running on port 1337/');
 });
 
