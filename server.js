@@ -3,6 +3,7 @@ var http = require('http');
 var app = express();
 var bodyParser = require('body-parser');
 var changeCase = require('change-case');
+var removeDiacritics = require('diacritics').remove;
 var YQL = require("yql");
 
 app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 8080);
@@ -15,8 +16,9 @@ http.createServer(app).listen(app.get('port'), app.get('ip'), function(){
 function Corriere (parola, callback)
 {
     var stringa = "";
-
-    var url = "http://dizionari.corriere.it/dizionario_italiano/" + changeCase.upperCase(parola[0]) + "/" + parola + ".shtml";
+    
+    parola = removeDiacritics(parola);
+    var url = "http://dizionari.corriere.it/dizionario_italiano/" + changeCase.upperCase(parola[0]) + "/" + changeCase.lowerCase(parola) + ".shtml";
 
    http.get(url, function(res) 
    {
@@ -36,15 +38,25 @@ function Corriere (parola, callback)
                    //console.log("Work in progress:  " + stringa);
               }
           }
-          else stringa = "Termine straniero o sillabazione non disponibile.";
+          else stringa = "Termine straniero, sillabazione non disponibile.";
        
-           callback(stringa);
+          callback(stringa);
          });
      }
-     else callback("La pagina non esiste. Provare ad aggiungere _1 alla parola richiesta."); 
-
+     else
+     {
+         url = url.replace(".shtml", "_1.shtml");
+         //console.log(url);
+         http.get(url, function(res) 
+         {
+             if (res.statusCode == 200)
+             {
+                 callback("La parola ha diverse accezioni. Provare a cercare " + parola + "_1, " + parola + "_2 e simili."); 
+             }
+             else callback("Parola inesistente.");  
+         });
+     } 
    });
-
 }
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -55,12 +67,6 @@ app.post('/', function(req, res)
  
   Corriere(req.body.name, function(result){
     res.send("Sillabazione di '" + req.body.name + "': "+ result);  });   
-});
-
-app.get('/', function(req, res) 
-{
-    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    res.send("Il server funziona (ma risponde in modo intelligente solo a chiamate POST)");   
 });
 
 
