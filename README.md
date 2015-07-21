@@ -1,1 +1,2 @@
-# D.A.R.I.O. (Dizionario Accludente Rimario Italiano Organizzato)
+# D.A.R.I.O. 
+<em>(Dizionario Accludente Rimario Italiano Organizzato)</em>
