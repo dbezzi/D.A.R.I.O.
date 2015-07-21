@@ -1,12 +1,12 @@
 { 
- 	"name": "OpenShift-Dizionario-Test", 
-   "version": "0.0.4", 
-   "description": "OpenShift Dictionary Test", 
+   "name": "D.A.R.I.O.", 
+   "version": "1.0.1", 
+   "description": "Dizionario Accludente Rimario Italiano Organizzato", 
    "keywords": [ 
-     "OpenShift", 
      "Node.js", 
      "application", 
-     "openshift" 
+     "dictionary",
+     "rhyme" 
    ], 
    "author": { 
      "name": "Dario Bezzi", 
@@ -26,7 +26,12 @@
     "http": "*",
     "change-case": "*",
     "yql": "*",
-    "body-parser": "1.12.3",
-    "express": "4.12.3"
+    "diacritics": "*",
+    "fs": "*",
+    "mustache": "*",
+    "util": "*",
+    "body-parser": "*",
+    "express": "*"
   }
  }
+
