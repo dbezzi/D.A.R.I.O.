@@ -2,12 +2,12 @@
  <html>
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="it"/>
- <link rel="stylesheet" href="assets/css/main.css" />
 	 <title>Rime in: {{#RIMARIO}}{{rappresentante}}{{/RIMARIO}}</title>
  </head>
  	<body>
  
  	 <h3>Trovate {{#RIMARIO}}{{Nrime}}{{/RIMARIO}} rime in {{#RIMARIO}}{{rappresentante}}{{/RIMARIO}}</h3> 
+                <p><a href="index.html">Torna al Rimario</a></p>
          	<p>Seleziona una parola e clicca qui per la sua definizione:</p>
                 
 		<form action=http://127.0.0.1:3000/definizione method="post">
@@ -20,11 +20,11 @@
 	       {{#rime}}
         
     			<fieldset>  
-       				<input type="radio" name="lemma" value = "{{rima}}" />{{rima}}
+				<input type="radio" name="lemma" value = "{{rima}}" />{{rima}}
 	       		</fieldset>
 
 		 {{/rime}}
         {{/RIMARIO}}
   		</form>
 	 </body>
- </html>
+</html>
