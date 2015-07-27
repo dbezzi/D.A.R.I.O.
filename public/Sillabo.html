@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="it" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <title>Nessuna rima trovata</title>
+</head>
+<body>
+		<!-- Header -->
+			<section id="header">
+					<header>
+					<span class="image avatar"><img src= https://upload.wikimedia.org/wikipedia/commons/5/50/Luigi_Pulci_by_Giuseppe_Benaglia.jpg alt="" /></span>
+				        <!--<span class="image avatar"><img src="images/pulci.jpg" /></span>-->
+					<h1 id="logo"><a href="#">D.A.R.I.O.</a></h1>
+
+   					 				<cite><br/>Con dolce rime e stil grato e soave  <br/>
+ 										    Aiuta i versi miei benignamente   <br/>
+ 										    E 'nsino al fine allumina la mente. <br/>
+ 									</cite><br/>
+                                                                       <h5>Luigi Pulci, <em> Morgante</em>, cantare I</h5>
+					</header>
+			</section>
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+
+	    <div id="main">
+
+		<section id="one">
+			<div class="container">
+                                <header class="major">
+					<h4>Sillabazione di {{parola}}</h4>
+				</header>
+
+<pre><code>{{risposta}}</code></pre>
+				<p> Cerca un'altra parola: </p>									
+				<form action=http://127.0.0.1:3000/sillabazione method="post">
+					<div class="row uniform">
+						<div class="6u 12u(xsmall)"><input type="text" id="name" name="lemma" placeholder="Che parola vuoi?" /></div>
+						<div class="12u">
+							<input class="actions" type="submit" value="Cerca" />
+						</div>
+						
+					</div>											
+				</form>
+
+                                <p><a href = "index.html">Torna al Rimario</a></p>
+			</div>
+		</section>
+            </div>
+	</body>
+</html>
