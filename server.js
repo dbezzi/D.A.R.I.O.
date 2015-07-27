@@ -3,6 +3,7 @@ var tools = require(__dirname + '/tools');
 var removeDiacritics = require('diacritics').remove;
 var fs = require('fs'); 
 var mustache = require('mustache'); 
+var url = require('url'); 
 
 var express = require("express"),
     app = express(),
@@ -30,9 +31,10 @@ console.log("Server in ascolto all'indirizzo http://%s:%s", hostname, port);
 app.listen(port, hostname);
 
 
-app.post('/definizione', function(req, res)
+app.get('/definizione', function(req, res)
 { 
-  tools.Definizione(req.body.lemma, function(result)
+  var queryObject = url.parse(req.url,true).query;
+  tools.Definizione(queryObject.lemma, function(result)
   {
          res.send(result.replace(/\n/g, "")); //restituisce direttamente una stringa
   });
@@ -45,7 +47,7 @@ app.post('/', function(req, res)
   tools.TrovaRime(RIMARIO, req.body.lemma, function(result)
   {
      var rData = {RIMARIO:result}; 
-     var page = fs.readFileSync(__dirname + '/public/ElencoRime.html', "utf8");
+     var page = fs.readFileSync(__dirname + '/public/Home.html', "utf8");
 
      if (rData.RIMARIO[0].Nrime == 0) res.redirect("/NoRime.html");
      else
@@ -53,22 +55,21 @@ app.post('/', function(req, res)
          var html = mustache.to_html(page, rData); // riempie i dati del modello
          res.send(html); 
      }
-    });
-
+  });
 });
 
 
 app.post('/sillabazione', function(req, res) 
 {
-  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-  res.charset = 'utf-8';
+  tools.Sillabazione(req.body.lemma, function(result)
+  {  
+     var rData = {risposta:result, parola:req.body.lemma};
+     //console.log(JSON.stringify(rData));
+     var page = fs.readFileSync(__dirname + '/public/Sillabo.html', "utf8");
 
-  var parola = req.body.lemma;
-  parola = removeDiacritics(parola.substring(0, parola.length-1)) + parola[parola.length - 1];
-  
-  tools.Sillabazione(parola, function(result){
-    res.send("Sillabazione di '" + parola + "': "+ result); 
-   });    
+     var html = mustache.to_html(page, rData); // riempie i dati del modello
+     res.send(html); 
+  });
 });
 
  
